@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <persona id="1" nome="Maurizio" cognome="Conti" />
+  <persona id="2" nome="Paolo" cognome="Petrangolini" />
+  <persona id="3" nome="Riccardo" cognome="Bianco" />
+</root>

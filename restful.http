@@ -1,0 +1,24 @@
+GET http://localhost:5000/api/Values
+
+###
+GET http://localhost:5000/api/Values/2
+
+###
+
+POST http://localhost:5000/api/Values/3 HTTP/1.1
+content-type: application/json
+
+{
+    "Nome": "Riccardo",
+    "Cognome": "Bianchi"
+}
+
+###
+
+PUT http://localhost:5000/api/Values/3 HTTP/1.1
+content-type: application/json
+
+{
+    "Nome": "Riccardo",
+    "Cognome": "Bianco"
+}
