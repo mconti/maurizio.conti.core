@@ -12,12 +12,12 @@ namespace testXMLFile.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        private IHostingEnvironment _env;
+        private IHostingEnvironment _env1;
         private string pathToDataFile = "/Data/dati.xml";
 
         public ValuesController( IHostingEnvironment env )
         {
-            this._env = env;
+            this._env1 = env;
         }
 
         // GET api/values
@@ -25,7 +25,7 @@ namespace testXMLFile.Controllers
         public IEnumerable<XElement> Get()
         {
             // Carico il file XML
-            XDocument Dati = XDocument.Load($"{_env.ContentRootPath}/{pathToDataFile}");
+            XDocument Dati = XDocument.Load($"{_env1.ContentRootPath}/{pathToDataFile}");
 
             // prelevo il primo elemento e accedo al suo attributo "Nome"
             XElement el =  Dati.Element("root").Elements("persona").First();
@@ -42,7 +42,7 @@ namespace testXMLFile.Controllers
         public string Get(int id)
         {
             // Carico il file XML
-            XDocument Dati = XDocument.Load($"{_env.ContentRootPath}/{pathToDataFile}");
+            XDocument Dati = XDocument.Load($"{_env1.ContentRootPath}/{pathToDataFile}");
             var studente =  from s in Dati.Element("root").Elements("persona")
                             where s.Attribute("id").Value == id.ToString()
                             select s;
@@ -58,7 +58,7 @@ namespace testXMLFile.Controllers
         public void Post(int id, [FromBody]Studente value)
         {
             // Carico il file XML
-            XDocument Dati = XDocument.Load($"{_env.ContentRootPath}/{pathToDataFile}");
+            XDocument Dati = XDocument.Load($"{_env1.ContentRootPath}/{pathToDataFile}");
             var studente =  from s in Dati.Element("root").Elements("persona")
                             where s.Attribute("id").Value == id.ToString()
                             select s;
@@ -75,7 +75,7 @@ namespace testXMLFile.Controllers
                 );
 
                 // lo salvo...
-                Dati.Save($"{_env.ContentRootPath}/{pathToDataFile}");
+                Dati.Save($"{_env1.ContentRootPath}/{pathToDataFile}");
             }
        }
 
@@ -84,7 +84,7 @@ namespace testXMLFile.Controllers
         public void Put(int id, [FromBody]Studente value)
         {
             // Carico il file XML
-            XDocument Dati = XDocument.Load($"{_env.ContentRootPath}/{pathToDataFile}");
+            XDocument Dati = XDocument.Load($"{_env1.ContentRootPath}/{pathToDataFile}");
             var studente =  from s in Dati.Element("root").Elements("persona")
                             where s.Attribute("id").Value == id.ToString()
                             select s;
@@ -96,7 +96,7 @@ namespace testXMLFile.Controllers
                 studente.First().Attribute("cognome").Value = value.Cognome;
 
                 // lo salvo...
-                Dati.Save($"{_env.ContentRootPath}/{pathToDataFile}");
+                Dati.Save($"{_env1.ContentRootPath}/{pathToDataFile}");
             }
 
         }
