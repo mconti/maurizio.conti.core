@@ -28,7 +28,9 @@ namespace testXMLFile.Controllers
             XDocument Dati = XDocument.Load($"{_env.ContentRootPath}/{pathToDataFile}");
 
             // prelevo il primo elemento e accedo al suo attributo "Nome"
-            string str = Dati.Element("root").Element("persona").Attribute("nome").Value;
+            XElement el =  Dati.Element("root").Elements("persona").First();
+            string str =  Dati.Element("root").Element("persona").Attribute("nome").Value;
+            string str1 = Dati.Element("root").Element("persona").Value;
 
             // accedo a tutti gli elementi "persona"
             // Notare che il motore di conversione verso json, converte tutto l'XML in json!!!
