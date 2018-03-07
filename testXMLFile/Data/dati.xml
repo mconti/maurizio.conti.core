@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <persona id="1" nome="Maurizio" cognome="Conti" />
+  <persona id="1" nome="Maurizio" cognome="Conti">valore</persona> 
   <persona id="2" nome="Paolo" cognome="Petrangolini" />
 </root>
