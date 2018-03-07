@@ -1,0 +1,35 @@
+### preleva tutti gli elementi
+GET http://localhost:5000/api/Values
+
+### preleva un elemento
+GET http://localhost:5000/api/Values/3
+
+### aggiunge un elemento
+POST http://localhost:5000/api/Values HTTP/1.1
+content-type: application/json
+
+{
+    "Valore": 90
+}
+
+### conta gli elementi
+GET http://localhost:5000/api/values/count
+
+### torna il più grande
+GET http://localhost:5000/api/values/max
+
+### torna il più piccolo
+GET http://localhost:5000/api/values/min
+
+###
+
+PUT http://localhost:5000/api/Values/3 HTTP/1.1
+content-type: application/json
+
+{
+    "Valore": 35
+}
+
+###
+
+DELETE http://localhost:5000/api/Values/3 HTTP/1.1

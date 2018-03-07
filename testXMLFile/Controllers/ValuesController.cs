@@ -103,6 +103,17 @@ namespace testXMLFile.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            // Carico il file XML
+            XDocument Dati = XDocument.Load($"{_env.ContentRootPath}/{pathToDataFile}");
+            var studente = from s in Dati.Element("root").Elements("persona")
+                           where s.Attribute("id").Value == id.ToString()
+                           select s;
+
+            if (studente.Count() > 0)
+                studente.First().Remove();
+
+            // lo salvo...
+            Dati.Save($"{_env.ContentRootPath}/{pathToDataFile}");
         }
     }
 

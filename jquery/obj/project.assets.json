@@ -12539,11 +12539,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/testXMLFile/testXMLFile.csproj",
-      "projectName": "testXMLFile",
-      "projectPath": "/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/testXMLFile/testXMLFile.csproj",
+      "projectUniqueName": "/Users/maurizio/Desktop/dotnetcore/jquery/jquery.csproj",
+      "projectName": "jquery",
+      "projectPath": "/Users/maurizio/Desktop/dotnetcore/jquery/jquery.csproj",
       "packagesPath": "/Users/maurizio/.nuget/packages/",
-      "outputPath": "/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/testXMLFile/obj/",
+      "outputPath": "/Users/maurizio/Desktop/dotnetcore/jquery/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
