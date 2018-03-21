@@ -98,7 +98,7 @@ namespace jquery.Controllers
         }
 
         // POST api/values
-        [HttpPost]
+        [HttpPost()]
         public void Post([FromBody]Temperatura t)
         {
             // Carico il file XML
