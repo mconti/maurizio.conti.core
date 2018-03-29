@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Questo file viene usato dal processo di pubblicazione/creazione pacchetto del progetto Web. È possibile personalizzare il comportamento del processo
+modificando il file MSBuild. Per altre informazioni su questo argomento, vedere https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <_PublishTargetUrl>ftp://159.8.31.21/</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>03/21/2018 11:58:17</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>03/21/2018 11:58:17</publishTime>
+    </File>
+    <File Include="App_Data/dati.xml">
+      <publishTime>03/21/2018 11:58:17</publishTime>
+    </File>
+    <File Include="jquery.deps.json">
+      <publishTime>03/27/2018 13:21:03</publishTime>
+    </File>
+    <File Include="jquery.dll">
+      <publishTime>03/27/2018 13:21:01</publishTime>
+    </File>
+    <File Include="jquery.pdb">
+      <publishTime>03/27/2018 13:21:01</publishTime>
+    </File>
+    <File Include="jquery.PrecompiledViews.dll">
+      <publishTime>03/27/2018 13:21:03</publishTime>
+    </File>
+    <File Include="jquery.PrecompiledViews.pdb">
+      <publishTime>03/27/2018 13:21:03</publishTime>
+    </File>
+    <File Include="jquery.runtimeconfig.json">
+      <publishTime>03/27/2018 13:21:03</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>03/27/2018 13:21:03</publishTime>
+    </File>
+    <File Include="wwwroot/gauge.html">
+      <publishTime>03/21/2018 11:58:17</publishTime>
+    </File>
+    <File Include="wwwroot/home.html">
+      <publishTime>03/27/2018 13:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/home1.html">
+      <publishTime>03/21/2018 11:58:17</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

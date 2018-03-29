@@ -35,6 +35,11 @@ namespace jquery
             }
 
             app.UseMvc();
+
+            DefaultFilesOptions options = new DefaultFilesOptions();
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("home.html");
+            app.UseDefaultFiles(options);
             app.UseStaticFiles();
         }
     }

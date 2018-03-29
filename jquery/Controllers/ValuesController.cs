@@ -13,7 +13,7 @@ namespace jquery.Controllers
     public class ValuesController : Controller
     {
         private IHostingEnvironment _env;
-        private string pathToDataFile = "/Data/dati.xml";
+        private string pathToDataFile = "/App_Data/dati.xml";
 
         public ValuesController( IHostingEnvironment env )
         {
@@ -98,11 +98,12 @@ namespace jquery.Controllers
         }
 
         // POST api/values
-        [HttpPost]
-        public void Post([FromBody]Temperatura t)
+        [HttpPost()]
+        public void Post([FromBody]Temperatura t )
         {
             // Carico il file XML
             XDocument Dati = XDocument.Load($"{_env.ContentRootPath}/{pathToDataFile}");
+
             XElement nuovoElemento = new XElement(
                     "Temperatura",
                         new XAttribute("Valore", t.Valore));

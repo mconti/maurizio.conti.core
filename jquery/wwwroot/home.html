@@ -16,7 +16,7 @@
             <td><button id="btnMin">Min</button></td>
             <td><button id="btnElementAt">Get at...</button></td>
             <td><input id="edtIdx" value="3" width="30"></td>
-            <td><p id="elementi... "/></td>
+            <td><p id="lblElementi"/></td>
             <td><p id="Nuovo Valore"/></td>
             <td><input id="edtNewVal" value="15" width="30"></td>
             <td><button id="btnAdd">Post!</button></td>
@@ -36,16 +36,19 @@
             animationRule: "dequint" 
         }).draw();
 
-        $(document).ready( function() {
-            $.get("http://localhost:5000/api/values/count", function( dati ) {
+        $(document).ready(function () {
+
+            $.ajaxSetup({ contentType: "application/json; charset=utf-8", });
+
+            $.get("/api/values/count", function (dati) {
                 console.log(dati); 
-                $("#elementi").text(" di " + dati);
+                $("#lblElementi").text(" di " + dati);
             });
         });
 
         $(document).ready( function() {
             $("#btnMax").click( function() {
-                $.get("http://localhost:5000/api/values/max", function( dati ) {
+                $.get("/api/values/max", function( dati ) {
                     console.log(dati); 
                     gauge1.value = dati.valore; 
                     gauge1.draw();              
@@ -55,7 +58,7 @@
 
         $(document).ready( function() {
             $("#btnMin").click( function() {
-                $.get("http://localhost:5000/api/values/min", function( dati ) {
+                $.get("/api/values/min", function( dati ) {
                     console.log(dati); 
                     gauge1.value = dati.valore;               
                 });
@@ -64,7 +67,7 @@
 
         $(document).ready( function() {
             $("#btnElementAt").click( function() {
-                var url = "http://localhost:5000/api/values/" + $("#edtIdx").val(); 
+                var url = "/api/values/" + $("#edtIdx").val(); 
                 console.log(url); 
 
                 $.get(url, function( dati ) {
@@ -79,15 +82,30 @@
         // Come formare un oggetto "studente" e inviarlo via POST?
         $(document).ready( function() {
             $("#btnAdd").click( function() {
-                var url = "http://localhost:5000/api/values/" + $("#edtIdx").val(); 
-                console.log(url); 
+                //var url = "/api/values/" + $("#edtIdx").val();
+                var url = "/api/values/";
+                console.log(url);
 
-                // $.get(url, function( dati ) {
-                //     console.log(dati); 
-                //     gauge1.value = dati.valore;               
-                // });
+                //$.post(url, { Valore: 95 }, function (msg) { console.log(msg) });
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    contentType: "application/json; charset=utf-8",
+                    data: "{'Valore':" + $("#edtNewVal").val() + "}",
+                    dataType: "json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Content-type", "application/json");
+                    },
+                    success: function (xhr, ajaxOptions, thrownError) {
+                        alert("OK. Message:" + xhr.statusText);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert("Failed to cancel subscription! Message:" + xhr.statusText);
+                    }
+                });
             });    
         });
+
     </script>
 
 </body>
