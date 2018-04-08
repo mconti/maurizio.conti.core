@@ -36,10 +36,23 @@ namespace jquery
 
             app.UseMvc();
 
+            //app.UseMvc(routes =>
+            //{
+                //routes.MapRoute(
+                //    name: "default",
+                //    template: "{controller=Home}/{action=Index}/{id?}");
+
+                //routes.MapRoute(
+                //    name: "api",
+                //    template: "api/{controller=Home}/{action=Index}/{id?}");
+            //});
+
+
             DefaultFilesOptions options = new DefaultFilesOptions();
             options.DefaultFileNames.Clear();
             options.DefaultFileNames.Add("home.html");
             app.UseDefaultFiles(options);
+            
             app.UseStaticFiles();
         }
     }
