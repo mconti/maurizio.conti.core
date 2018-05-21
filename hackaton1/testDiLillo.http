@@ -1,0 +1,47 @@
+
+### preleva tutti gli elementi (versione locale)
+GET http://localhost:5000/api/Values
+
+###
+POST http://localhost:5000/api/Values HTTP/1.1
+content-type: application/json
+
+{
+    "BlogId": 10,
+    "Url": "www.fablabromagna.org"
+}
+###
+PUT http://localhost:5000/api/Values/10 HTTP/1.1
+content-type: application/json
+
+{
+    "BlogId": 10,
+    "Url": "www.andreino.cc"
+}
+
+###
+DELETE  http://localhost:5000/api/Values/14 HTTP/1.1
+
+### preleva tutti gli elementi (versione online)
+GET http://www.dilillo.cloud/api/Values
+
+###
+POST http://www.dilillo.cloud/api/Values HTTP/1.1
+content-type: application/json
+
+{
+    "BlogId": 9,
+    "Url": "www.fablabromagna.org"
+}
+###
+PUT http://www.dilillo.cloud/api/Values/10 HTTP/1.1
+content-type: application/json
+
+{
+    "BlogId": 10,
+    "Url": "www.andreino.cc"
+}
+
+###
+DELETE  http://www.dilillo.cloud/api/Values/10 HTTP/1.1
+

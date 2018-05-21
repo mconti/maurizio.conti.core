@@ -17,64 +17,87 @@ namespace hackaton1.Controllers
         private string pathToDataFile = "/App_Data/dati.xml";
         public List<Persona> Persone{get;set;}
 
+        public BloggingContext db {get; set;}
+
         public ValuesController( IHostingEnvironment env )
         {
+            // Setta le variabili di ambiente (per poter accedere al file system)
             ambiente = env;
             Dati = XDocument.Load($"{ambiente.ContentRootPath}/{pathToDataFile}");
 
+            // Carica il file XML
             Persone = (
                 from p in Dati.Element("root").Element("Persone").Elements("Persona")
                 select new Persona{ Nome = p.Attribute("Nome").Value } 
             ).ToList<Persona>();
 
+            // si connette al db
+            db = new BloggingContext();
         }
 
         // GET api/values
         [HttpGet]
-        public IEnumerable<Blog> Get()
-        {
-            // Gli array, le List ... sono derivate di IEnumerable...    
-            // return Persone;
-            //return new string[] { "value1", "value2" };
-            var db = new BloggingContext();
-            if( db.Blogs.Count() < 10 ) {
-                db.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/adonet" });
-                var count = db.SaveChanges();
-            }
-            else{
-                foreach( var r in db.Blogs )
-                    db.Blogs.Remove(r);
-
-                db.SaveChanges();
-            }
+        public IEnumerable<Blog> GetFromDb()
+        {    
             return db.Blogs.ToList();
-        }
-
-        // GET api/values/qualcosa
-        [HttpGet("{qualcosa}")]
-        public Persona Get(string qualcosa)
-        {
-            var persone =   from p in Persone
-                            where p.Nome == qualcosa
-                            select p;
-            
-            if( persone.Count() > 0 )
-                return persone.First();
-
-            return new Persona{ Nome="??" };
-        }
+        }        
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]Persona oggettoDalWeb)
+        public void Post([FromBody]Blog oggettoDalWeb)
         {
-            XElement nuovoElemento = new XElement(
-                    "Persona",
-                        new XAttribute("Nome", oggettoDalWeb.Nome));
-            
-            Dati.Element("root").Element("Persone").Add(nuovoElemento);
-            Dati.Save($"{ambiente.ContentRootPath}/{pathToDataFile}");
+            db.Blogs.Add( oggettoDalWeb );
+            db.SaveChanges();
         }
+
+        // PUT api/values/5  (con le graffe si aspetta una variabile...)
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody]Blog oggettoDalWeb)
+        {            
+            var trovato = db.Blogs.Find( id );
+            if( trovato != null ) {
+                trovato.Posts = oggettoDalWeb.Posts;
+                trovato.Url = oggettoDalWeb.Url;
+                db.SaveChanges();
+            }
+        }
+
+        // DELETE api/values/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            var trovato = db.Blogs.Find( id );
+            if( trovato != null ) {
+                db.Blogs.Remove( trovato );
+                db.SaveChanges();
+            }
+        }
+
+
+        // 
+        // 
+        // Da qui in poi si lavora sul file XML
+        // 
+        // 
+
+        // GET api/values
+        //[HttpGet]
+        //public IEnumerable<Blog> GetXML()
+        //{            
+            // if( db.Blogs.Count() < 10 ) {
+            //     db.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/adonet" });
+            //     var count = db.SaveChanges();
+            // }
+            // else
+            // {
+            //     foreach( var r in db.Blogs )
+            //         db.Blogs.Remove(r);
+
+            //     db.SaveChanges();
+            // }
+        //    return db.Blogs.ToList();
+        //
+        //}
 
         // PUT1 api/values/id   (senza graffe si aspetta la stringa id...)
         [HttpPut("id")]
@@ -86,18 +109,19 @@ namespace hackaton1.Controllers
             
         }
 
-        // PUT2 api/values/5  (con le graffe si aspetta una variabile...)
-        [HttpPut("{id}")]
-        public void Put2(int id, [FromBody]Persona value)
+        // GET api/values/qualcosa
+        [HttpGet("{qualcosa}")]
+        public Persona GetWithParam(string qualcosa)
         {
-            // ... id è una variabile intera che arriva dall'url del web...
-            // value è "content" che viene spedito nel Body della chiamata
+            var persone =   from p in Persone
+                            where p.Nome == qualcosa
+                            select p;
+            
+            if( persone.Count() > 0 )
+                return persone.First();
+
+            return new Persona{ Nome="??" };
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
