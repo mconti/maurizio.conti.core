@@ -1,0 +1,40 @@
+
+### preleva tutti gli elementi (versione online)
+GET http://andreino.cc/api/Values
+
+###
+POST http://andreino.cc/api/Values HTTP/1.1
+content-type: application/json
+
+{
+    "Nome": "Riccardo"
+}
+
+### preleva un elemento giusto
+GET http://andreino.cc/api/Values/Maurizio
+
+### aggiunge un elemento
+POST http://andreino.cc/api/Values HTTP/1.1
+content-type: application/json
+
+{
+    "Nome": "Riccardo"
+}
+
+###
+
+PUT http://andreino.cc/api/Values/id HTTP/1.1
+content-type: application/json
+
+{
+    "Nome": "Pluto"
+}
+
+###
+
+PUT http://andreino.cc/api/Values/2 HTTP/1.1
+content-type: application/json
+
+{
+    "Nome": "Pippo"
+}

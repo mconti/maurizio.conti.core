@@ -1,0 +1,13 @@
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/bin/Debug/netcoreapp2.0/App_Data/dati.xml
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/bin/Debug/netcoreapp2.0/hackaton1.deps.json
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/bin/Debug/netcoreapp2.0/hackaton1.runtimeconfig.json
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/bin/Debug/netcoreapp2.0/hackaton1.runtimeconfig.dev.json
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/bin/Debug/netcoreapp2.0/hackaton1.dll
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/bin/Debug/netcoreapp2.0/hackaton1.pdb
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/obj/Debug/netcoreapp2.0/hackaton1.csproj.CoreCompileInputs.cache
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/obj/Debug/netcoreapp2.0/hackaton1.AssemblyInfoInputs.cache
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/obj/Debug/netcoreapp2.0/hackaton1.AssemblyInfo.cs
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/obj/Debug/netcoreapp2.0/hackaton1.dll
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/obj/Debug/netcoreapp2.0/hackaton1.pdb
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/obj/Debug/netcoreapp2.0/hackaton1.csprojResolveAssemblyReference.cache
+/Users/maurizio/Desktop/dotnetcore/maurizio.conti.core/hackaton1/bin/Debug/netcoreapp2.0/App_Data/blogging.db

@@ -1,0 +1,56 @@
+### preleva tutti gli elementi
+GET http://localhost:5000/api/Values
+
+### preleva un elemento giusto
+GET http://localhost:5000/api/Values/Maurizio
+
+### preleva un elemento sbagliato
+GET http://localhost:5000/api/Values/Riccardo
+
+### aggiunge un elemento
+POST http://localhost:5000/api/Values HTTP/1.1
+content-type: application/json
+
+{
+    "Nome": "Riccardo"
+}
+
+###
+
+PUT http://localhost:5000/api/Values/id HTTP/1.1
+content-type: application/json
+
+{
+    "Nome": "Pluto"
+}
+
+###
+
+PUT http://localhost:5000/api/Values/2 HTTP/1.1
+content-type: application/json
+
+{
+    "Nome": "Pippo"
+}
+
+### conta gli elementi
+GET http://localhost:5000/api/values/count
+
+### torna il più grande
+GET http://localhost:5000/api/values/max
+
+### torna il più piccolo
+GET http://localhost:5000/api/values/min
+
+###
+
+PUT http://localhost:5000/api/Values/3 HTTP/1.1
+content-type: application/json
+
+{
+    "Valore": 35
+}
+
+###
+
+DELETE http://localhost:5000/api/Values/3 HTTP/1.1
