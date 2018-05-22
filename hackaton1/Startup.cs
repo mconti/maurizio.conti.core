@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+// Plugin Azure deploy per VS Code
+// https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice
+
 namespace hackaton1
 {
     public class Startup

@@ -45,3 +45,11 @@ content-type: application/json
 ###
 DELETE  http://www.dilillo.cloud/api/Values/10 HTTP/1.1
 
+###
+PATCH http://www.dilillo.cloud/api/Values/10 HTTP/1.1
+content-type: application/json
+
+{
+    "BlogId": 10,
+    "Url": "www.andreino.patch"
+}

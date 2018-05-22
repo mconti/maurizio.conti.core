@@ -1,0 +1,32 @@
+
+### preleva tutti gli elementi (versione online)
+GET https://flr.azurewebsites.net/api/Values
+
+###
+POST https://flr.azurewebsites.net/api/Values HTTP/1.1
+content-type: application/json
+
+{
+    "BlogId": 9,
+    "Url": "www.fablabromagna.org"
+}
+###
+PUT https://flr.azurewebsites.net/api/Values/10 HTTP/1.1
+content-type: application/json
+
+{
+    "BlogId": 10,
+    "Url": "www.andreino.cc"
+}
+
+###
+DELETE  https://flr.azurewebsites.net/api/Values/10 HTTP/1.1
+
+###
+PATCH https://flr.azurewebsites.net/api/Values/10 HTTP/1.1
+content-type: application/json
+
+{
+    "BlogId": 10,
+    "Url": "www.andreino.patch"
+}

@@ -62,6 +62,18 @@ namespace hackaton1.Controllers
             }
         }
 
+        // PATCH api/values/5  (con le graffe si aspetta una variabile...)
+        [HttpPatch("{id}")]
+        public void Patch(int id, [FromBody]Blog oggettoDalWeb)
+        {            
+            var trovato = db.Blogs.Find( id );
+            if( trovato != null ) {
+                trovato.Posts = oggettoDalWeb.Posts;
+                trovato.Url = oggettoDalWeb.Url;
+                db.SaveChanges();
+            }
+        }
+
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
@@ -71,6 +83,12 @@ namespace hackaton1.Controllers
                 db.Blogs.Remove( trovato );
                 db.SaveChanges();
             }
+        }
+
+        // OPTIONS api/values
+        public void Options()
+        {        
+            
         }
 
 
