@@ -10,7 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace coreSQLite
-{   
+{  
+    /* 
     public class BloggingContext : DbContext
     {
         // public BloggingContext (DbContextOptions<BloggingContext> options)
@@ -44,4 +45,6 @@ namespace coreSQLite
         public int BlogId { get; set; }
         public Blog Blog { get; set; }
     }
-}
+ */
+ 
+ }

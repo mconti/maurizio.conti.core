@@ -16,10 +16,11 @@ namespace coreSQLite
         {
             BuildWebHost(args).Run();
         }
-
+        
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseUrls("http://localhost:62640")  //per puntare sempre ad una porta scelta da noi
                 .Build();
     }
 }

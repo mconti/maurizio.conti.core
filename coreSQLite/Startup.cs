@@ -41,6 +41,7 @@ namespace coreSQLite
             }
 
             app.UseMvc();
+            app.UseStaticFiles();
         }
     }
 }
