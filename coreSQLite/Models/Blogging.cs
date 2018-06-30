@@ -1,19 +1,30 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.IO;
+using System.Linq;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
-namespace hackaton1.Models
-{
+namespace coreSQLite
+{   
     public class BloggingContext : DbContext
     {
+        // public BloggingContext (DbContextOptions<BloggingContext> options)
+        //     : base(options)
+        // {
+        // }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseSqlite("Data Source=bin/Debug/netcoreapp2.0/blogging.db");
             //optionsBuilder.UseSqlite("Data Source=blogging.db");
-            //optionsBuilder.UseSqlite("Data Source=bin/Debug/netcoreapp2.0/blogging.db");
-            optionsBuilder.UseSqlite("Data Source=App_Data/blogging.db");
-        }
+        }       
     }
 
     public class Blog
@@ -22,12 +33,6 @@ namespace hackaton1.Models
         public string Url { get; set; }
 
         public List<Post> Posts { get; set; }
-        public Blog()
-        {
-            BlogId = 0;
-            Url = "non trovato!";
-            Posts = new List<Post>();
-        }
     }
 
     public class Post

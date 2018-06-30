@@ -85,6 +85,13 @@ namespace hackaton1.Controllers
             }
         }
 
+        // GET api/values/5
+        [HttpGet("{id}")]
+        public Blog Get(int id)
+        {
+            return db.Blogs.Find( id );
+        }
+
         // OPTIONS api/values
         public void Options()
         {        

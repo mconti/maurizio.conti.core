@@ -9,10 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-// Plugin Azure deploy per VS Code
-// https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice
+using Microsoft.EntityFrameworkCore;
 
-namespace hackaton1
+namespace coreSQLite
 {
     public class Startup
     {
@@ -27,6 +26,10 @@ namespace hackaton1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            //services.AddDbContext<BloggingContext>(options =>
+            //      options.UseSqlite("Data Source=blogging.db"));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,12 +40,6 @@ namespace hackaton1
                 app.UseDeveloperExceptionPage();
             }
 
-            DefaultFilesOptions options = new DefaultFilesOptions();
-            options.DefaultFileNames.Clear();
-            options.DefaultFileNames.Add("index.html");
-            app.UseDefaultFiles(options);
-            app.UseStaticFiles();
-            
             app.UseMvc();
         }
     }
