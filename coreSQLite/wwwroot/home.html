@@ -1,0 +1,649 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/ag-grid/dist/ag-grid.min.noStyle.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid/dist/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid/dist/styles/ag-theme-balham.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> <!--  Chart.js libreria-->
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+<body>
+    <div class="container">
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <img src="NuovaSpesa.png" width="50%" height="50%">
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            <!-- Nome: <input type="text" id="nome" request><br> -->
+                            Categoria: <input type="text" id="categoria" request><br>
+                            Data: <input type="datetime-local" id="datati"><br>
+                            <select name="posneg" id="posneg">
+                                <option value="Uscita" id="Uscita">Uscita</option>
+                                <option value="Entrata" id="Entrata">Entrata</option>
+                            </select>
+                            Importo: <input type="text" id="importo"><br>
+                            <script>
+                                function conteggio() {
+
+                                    if (document.getElementById("posneg").value == "Uscita") {
+
+                                        document.getElementById("importo").value = "-" + document.getElementById("importo").value;
+
+                                    }
+                                    else {
+                                        document.getElementById("importo").value = "+" + document.getElementById("importo").value;
+                                    }
+
+                                    location.reload();
+                                }
+                                //if (document.getElementById("PosNeg") == "Uscita") {
+                                //    alert("Numero negativo");
+                                //}
+                                //else
+                                //{
+                                //    alert("Numero positivo");
+                                //}
+
+                            </script>
+                            Descrizione: <input type="text" id="descrizione"><br>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-default" id="Invia" data-dismiss="modal" onclick="conteggio();">Conferma</button>
+
+                    </div>
+                </div>
+
+            </div>
+            <script>
+
+            </script>
+        </div>
+
+
+        <!-- Modal2 -->
+        <div id="myModal2" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <img src="Statistiche2.png" width="50%" height="50%">
+                    </div>
+                    <div class="modal-body">
+
+                        <a onclick="myChart1()" class="navigation navigation-prev " aria-label="Previous page: Time">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+
+
+                        <a onclick="myChart2()" class="navigation navigation-next " aria-label="Next page: Linear">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+
+
+                        <p>
+                            <canvas id="myChart" width="400" height="400"></canvas>
+
+
+                            <script>
+                                var k = 0;
+                                var ctx = document.getElementById('myChart').getContext('2d');
+                                var chart = new Chart(ctx, {
+                                    // The type of chart we want to create
+                                    type: 'bar',
+
+                                    // The data for our dataset
+                                    data: {
+                                        labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                        datasets: [{
+                                            label: "My First dataset",
+                                            backgroundColor: 'rgb(255, 99, 132)',
+                                            borderColor: 'rgb(255, 99, 132)',
+                                            data: [0, 10, 5, 2, 20, 30, 45],
+                                        }]
+                                    },
+
+                                    // Configuration options go here
+                                    options: {}
+                                });
+
+                                function myChart1() {
+                                    k = k - 1;
+                                    if (k < 0) {
+                                        k = 2;
+                                    }
+                                    if (k == 0) {
+                                        var ctx = document.getElementById('myChart').getContext('2d');
+                                        var chart = new Chart(ctx, {
+                                            // The type of chart we want to create
+                                            type: 'bar',
+
+                                            // The data for our dataset
+                                            data: {
+                                                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                                datasets: [{
+                                                    label: "My First dataset",
+                                                    backgroundColor: 'rgb(255, 99, 132)',
+                                                    borderColor: 'rgb(255, 99, 132)',
+                                                    data: [0, 10, 5, 2, 20, 30, 45],
+                                                }]
+                                            },
+
+                                            // Configuration options go here
+                                            options: {}
+                                        });
+                                    }
+                                    if (k == 1) {
+                                        var ctx = document.getElementById('myChart').getContext('2d');
+                                        var chart = new Chart(ctx, {
+                                            // The type of chart we want to create
+                                            type: 'line',
+
+                                            // The data for our dataset
+                                            data: {
+                                                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                                datasets: [{
+                                                    label: "My First dataset",
+                                                    backgroundColor: 'rgb(255, 99, 132)',
+                                                    borderColor: 'rgb(255, 99, 132)',
+                                                    data: [0, 10, 5, 2, 20, 30, 45],
+                                                }]
+                                            },
+
+                                            // Configuration options go here
+                                            options: {}
+                                        });
+                                    }
+                                    if (k == 2) {
+                                        var ctx = document.getElementById('myChart').getContext('2d');
+                                        var chart = new Chart(ctx, {
+                                            // The type of chart we want to create
+                                            type: 'pie',
+
+                                            // The data for our dataset
+                                            data: {
+                                                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                                datasets: [{
+                                                    label: "My First dataset",
+                                                    backgroundColor: 'rgb(255, 99, 132)',
+                                                    borderColor: 'rgb(255, 99, 132)',
+                                                    data: [0, 10, 5, 2, 20, 30, 45],
+                                                }]
+                                            },
+
+                                            // Configuration options go here
+                                            options: {}
+                                        });
+                                    }
+                                }
+
+                                function myChart2() {
+                                    k++;
+                                    if (k > 2) {
+                                        k = 0;
+                                    }
+                                    if (k == 0) {
+                                        var ctx = document.getElementById('myChart').getContext('2d');
+                                        var chart = new Chart(ctx, {
+                                            // The type of chart we want to create
+                                            type: 'bar',
+
+                                            // The data for our dataset
+                                            data: {
+                                                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                                datasets: [{
+                                                    label: "My First dataset",
+                                                    backgroundColor: 'rgb(255, 99, 132)',
+                                                    borderColor: 'rgb(255, 99, 132)',
+                                                    data: [0, 10, 5, 2, 20, 30, 45],
+                                                }]
+                                            },
+
+                                            // Configuration options go here
+                                            options: {}
+                                        });
+                                    }
+                                    if (k == 1) {
+                                        var ctx = document.getElementById('myChart').getContext('2d');
+                                        var chart = new Chart(ctx, {
+                                            // The type of chart we want to create
+                                            type: 'line',
+
+                                            // The data for our dataset
+                                            data: {
+                                                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                                datasets: [{
+                                                    label: "My First dataset",
+                                                    backgroundColor: 'rgb(255, 99, 132)',
+                                                    borderColor: 'rgb(255, 99, 132)',
+                                                    data: [0, 10, 5, 2, 20, 30, 45],
+                                                }]
+                                            },
+
+                                            // Configuration options go here
+                                            options: {}
+                                        });
+                                    }
+                                    if (k == 2) {
+                                        var ctx = document.getElementById('myChart').getContext('2d');
+                                        var chart = new Chart(ctx, {
+                                            // The type of chart we want to create
+                                            type: 'pie',
+
+                                            // The data for our dataset
+                                            data: {
+                                                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                                datasets: [{
+                                                    label: "My First dataset",
+                                                    backgroundColor: 'rgb(255, 99, 132)',
+                                                    borderColor: 'rgb(255, 99, 132)',
+                                                    data: [0, 10, 5, 2, 20, 30, 45],
+                                                }]
+                                            },
+
+                                            // Configuration options go here
+                                            options: {}
+                                        });
+                                    }
+                                }
+
+
+                            </script>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-default" id="Invia" data-dismiss="modal" ">Chiudi</button>
+
+                    </div>
+                </div>
+
+            </div>
+            <script>
+
+                var TabellaAttuale = "#tabella";
+
+
+                function SearchHome() {
+                    TabellaAttuale = "#tabella";
+                }
+                var NomePadre = "";
+                $.get("http://localhost:62640/api/values/newlogin", function (data, status) {
+                    console.log(data);
+                    var lung = data.length;
+
+                    //alert(data[(lung - 1)].utentelog);
+                    NomePadre = (data[(lung - 1)].utentelog);
+
+                });
+                alert(NomePadre);
+
+                var NomeFiglio1 = "Madre";
+                var NomeFiglio2 = "Figlio";
+
+                function ciao() {
+                    alert("ciao");
+                    //alert(document.getElementById('UserNow').value);
+                    //Fare il passaggio dei dati al server
+                }
+
+            </script>
+        </div>
+
+        <!-- Modal -->
+        <div id="myModal3" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <img src="impostazioni.png" width="50%" height="50%">
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            <button type="button" class="btn btn-default" onclick="document.getElementById('id01').style.display='block'">Aggiungi nuovo familiare</button>
+                        </p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-default" id="Invia" data-dismiss="modal" onclick="conteggio();">Conferma</button>
+
+                    </div>
+                </div>
+
+            </div>
+            <script>
+
+            </script>
+        </div>
+
+
+
+
+        <!-- Inizio navbar padre madre ecc.-->
+        <ul class="nav nav-tabs navbar-fixed-top">
+            <li class="active" id="casa" onclick="changeBackground('#116b90')">
+                <a data-toggle="tab" href="#home" onclick="SearchHome()">Home</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#Padre" id="padre" onclick="SearchPadre()">
+                    <script>document.write(NomePadre)</script>
+                </a>
+            </li>
+
+            <li>
+                <a data-toggle="tab" href="#Madre" id="madre" onclick="changeBackground('#188bba')">
+                    <script>document.write(NomeFiglio1)</script>
+                </a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#Figlio" id="figlio" onclick="changeBackground('#1e9dd1')">
+                    <script>document.write(NomeFiglio2)</script>
+                </a>
+            </li>
+            <br>
+            <br>
+            <div class="search-container" id="cerca">
+                <br>
+                <form action="/action_page.php">
+                    &nbsp;
+
+                    <input type="text" id="search" placeholder="Search.." name="search">
+
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                    <img src="Carrello.png" width="6%" height="6%">
+                    &nbsp; &nbsp;
+                    <img src="euro.png" width="4%" height="4%">
+
+                    <input type="text" readonly value="0" align="right" id="saldoattuale2" style="width: 100px;">
+                    <script>
+
+                        function changeBackground(color) {
+                            document.body.style.background = color;
+                            document.getElementById("cerca").style.background = color
+                        }
+                    </script>
+                </form>
+            </div>
+
+        </ul>
+
+        <br>
+        <br>
+        <br>
+
+
+        <br>
+        <br>
+        <div id="home" class="tab-pane fade in active">
+
+            <table border="1" id="tabella" class='table table-striped' style="padding:0px">
+                <tbody>
+                    <!--<tr>
+                        <td> <b style="float:left;">Categoria</b>
+                            <b style="float:right;">Importo</b></td>
+                    </tr>-->
+                </tbody>
+            </table>
+
+            <script>
+
+                var SpesaTot = 0;
+                var table = document.getElementById("tabella");
+                $.get("http://localhost:62640/api/values/tab", function (data, status) {
+                    console.log(data);
+
+                    var i = 0;
+                    for (i = 0; i < data.length; i++) {
+
+                        SpesaTot += parseInt(data[i].importo);
+                        $(table).append("<tr><td> " + data[i].nome + "<br>" + data[i].categoria + "<div style='float:right;'>" + data[i].datati + "<br>" + data[i].importo + "</div> <br>  " + data[i].descrizione + "</td></tr>");
+                        document.getElementById("saldoattuale2").value = SpesaTot;
+                    }
+
+                });
+            </script>
+        </div>
+
+        <div id="Padre" class="tab-pane fade">
+            <!--     SCRITTE DAL PADRE   -->
+            <table border="1" id="tabellaP" class='table table-striped' style="padding:0px">
+                <tbody>
+                    <!--<tr>
+                        <td>
+                            <b style="float:left;">Categoria</b>
+                            <b style="float:right;">Importo</b>
+                        </td>
+                    </tr>-->
+                </tbody>
+            </table>
+
+            <script>
+
+
+                function SearchPadre() {
+
+                    var SpesaTotP = 0;
+                    var tableP = document.getElementById("tabellaP");
+                    $.get("http://localhost:62640/api/values/tab", function (data, status) {
+                        console.log(data);
+
+
+                        changeBackground('#1479a3');
+                        TabellaAttuale = "#tabellaP";
+
+                        var i = 0;
+
+                        for (i = 0; i < data.length; i++) {
+                            if (data[i].nome == NomePadre) {
+                                SpesaTotP += parseInt(data[i].importo);
+
+
+                                $(tableP).append("<tr><td> " + data[i].nome + "<br>" + data[i].categoria + "<div style='float:right;'>" + data[i].datati + "<br>" + data[i].importo + "</div> <br>  " + data[i].descrizione + "</td></tr>");
+
+
+
+                                document.getElementById("saldoattuale2").value = SpesaTotP;
+                            }
+                        }
+
+
+                    });
+                }
+
+            </script>
+
+
+        </div>
+
+        <div id="Madre" class="tab-pane fade">
+            <!--     SCRITTE DALLA MADRE   -->
+            ciao solo dalla madre
+        </div>
+        <div id="Figlio" class="tab-pane fade">
+            <!--     SCRITTE DAL FIGLIO   -->
+            ciao sono dal figlio
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <br>
+
+        <input type="image" src="btnAggiungiSpesa.png" width="40%" height="40%" data-toggle="modal" data-target="#myModal">>
+        <input type="image" src="Statistiche.png" width="40%" height="40%" data-toggle="modal" data-target="#myModal2">
+        <input type="image" src="Opzioni.png" width="8%" height="8%" data-toggle="modal" data-target="#myModal3">
+        <br>
+        <br>
+    </div>
+
+
+    <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal"></span>
+        <form class="modal-content" action="/action_page.php">
+            <div class="container">
+                <h1>Iscriviti</h1>
+
+                <label for="utente"><b>Nome Utente</b></label>
+                <input type="text" placeholder="Nome Utente" name="utente" id="utente" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+                <label for="psw-repeat"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" id="password2" required>
+
+
+
+                <label>
+                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+                </label>
+
+                <!-- <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms Privacy</a>.</p> -->
+
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <button type="button" class="btn btn-default" id="InviaSon" data-dismiss="modal" onclick="location.reload();">Conferma</button>
+                    
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+    <script>
+
+
+        //         fetch('http://localhost:62640/api/values/tab').then(function (response)
+        //         {
+        //	return response.json();
+        //         }).then(function (data)
+        //         {
+        //									data.forEach(function(row) //Per mettere il saldo nella textbox
+        //									{
+        //										if(row)
+        //										{
+        //											Saldo+=parseInt(row.importo);
+        //										}
+        //									});
+        //									document.getElementById('saldoattuale').value = Saldo;
+        //									gridOptions.api.setRowData(data);
+        //})
+
+
+
+
+
+        $(document).ready(function () {
+            $("#Invia").click(function () {
+                //var url = "/api/values/" + $("#edtIdx").val(); //prima era commentato
+                var url = "http://localhost:62640/api/values/postdatitabella";
+                console.log(url);
+
+                //$.post(url, { Valore: "ciao" }, function (msg) { console.log(msg) });
+
+                // chiamata usando ajax
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    contentType: "application/json; charset=utf-8",
+                    data: "{'Nome': '" + (NomePadre) + "', 'Categoria': '" + $("#categoria").val() + "' , 'Data': '" + $("#datati").val() + "' , 'Importo': '" + $("#importo").val() + "','Descrizione': '" + $("#descrizione").val() + "'}",
+                    dataType: "json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Content-type", "application/json");
+                    },
+                    success: function (xhr, ajaxOptions, thrownError) {
+                        alert("OK. Message:" + xhr.statusText);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert("Failed to cancel subscription! Message:" + xhr.statusText);
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $("#search").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $(TabellaAttuale + " tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+
+        ////Invio registrazione figlio al server
+        //$(document).ready(function () {
+        //    $("#InviaSon").click(function () {
+        //        //var url = "/api/values/" + $("#edtIdx").val(); //prima era commentato
+        //        var url = "http://localhost:62640/api/values/loginson";
+        //        console.log(url);
+        //        //if(document.getElementById('password').value == document.getElementById('password2').value) //Controllo password continua a non andare
+        //        //{
+        //        var method = "POST";
+        //        var utente = document.getElementById('utente').value;
+        //        var password = document.getElementById('password').value;
+
+        //        var padre = NomePadre
+        //        //if (utente == " ") {
+        //        //    utente = "p";
+        //        //}
+        //        //if (password == " ") {
+        //        //    password = "p";
+        //        //}
+        //        //if (NomePadre == " ") {
+        //        //    password = "p";
+        //        //}
+        //        var postData3 = "{'utente':'" + utente + "','password':'" + password + "','padre':'" + padre+"'}"; 
+        //        var shouldBeAsync = true;
+
+        //        var request = new XMLHttpRequest();
+
+        //        request.onload = function () {
+        //            var status = request.status; // Questa variabile ti dice se è andata a buon fine
+        //        }
+
+        //        request.open(method, url, shouldBeAsync);
+
+        //        request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        //        request.send(postData3);
+        //        alert(status);
+        //        //  }
+        //        //else
+        //        //{
+        //        //alert("Le password inserite non combaciano");
+        //        //} 
+        //    });
+        //});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+﻿<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="stylelogin.css" />
+    <link rel="shortcut icon" href="">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </head>
+<body>
+    
+    <br><br>
+    <center>
+    <br>
+    <img src = "LogoLogin.png" width="275" height="96,11"> </center>
+    <br><br>
+    <div class="login-page" style = "width:100%" >
+      <div class="form" >
+        <form class="register-form">
+          <input type="text" placeholder="name"/>
+          <input type="password" placeholder="password"/>
+          <input type="text" placeholder="email address"/>
+          <button>create</button>
+          <p class="message">Già registrato? <a href="#">Accedi</a></p>
+        </form>
+        <form class="login-form">
+            <input type="text" placeholder="username" id="UserNow" />
+            <input type="password" placeholder="password" id="PasswordNow" />
+            <button onclick="AccediPagina()" id="entradati" >login</button>
+            <p class="message">Non sei registrato?<a onclick="document.getElementById('id01').style.display='block'">Crea un account</a></p>
+
+        </form>
+    </div>
+
+    <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal"></span>
+        <form class="modal-content" action="/action_page.php">
+          <div class="container">
+            <h1>Iscriviti</h1>
+          
+            <label for="utente"><b>Nome Utente</b></label>
+            <input type="text" placeholder="Nome Utente" name="utente" id="utente" required>
+      
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" id="password" required>
+      
+            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" id="password2" required>
+            
+
+
+            <label>
+              <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+            </label>
+      
+            <!-- <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms Privacy</a>.</p> -->
+      
+            <div class="clearfix">
+              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+              <button type="button" class="btn btn-default" id="Invia" data-dismiss="modal" >Conferma</button>	<!--RIMETTILO!!! -> onclick="location.reload();"-->
+             
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+      <script>
+          // Get the modal
+          var modal = document.getElementById('id01');
+          
+          // When the user clicks anywhere outside of the modal, close it
+          window.onclick = function(event) {
+              if (event.target == modal) {
+                  modal.style.display = "none";
+              }
+          }
+          </script>
+
+    <style>
+    * {box-sizing: border-box}
+    /* Full-width input fields */
+      input[type=text], input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    /* Add a background color when the inputs get focus */
+    input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Set a style for all buttons */
+    button {
+      background-color: #116b90;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+
+    button:hover {
+      opacity:1;
+    }
+
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+      padding: 14px 20px;
+      background-color: #116b90;
+    }
+
+    /* Float cancel and signup buttons and add an equal width */
+    .cancelbtn, .signupbtn {
+      float: left;
+      width: 50%;
+    }
+
+    /* Add padding to container elements */
+    .container {
+      padding: 16px;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: #474e5d;
+      padding-top: 50px;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid #888;
+      width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* Style the horizontal ruler */
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+
+    /* The Close Button (x) */
+    .close {
+      position: absolute;
+      right: 35px;
+      top: 15px;
+      font-size: 40px;
+      font-weight: bold;
+      color: #f1f1f1;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #116b90;
+      cursor: pointer;
+    }
+
+    /* Clear floats */
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    /* Change styles for cancel button and signup button on extra small screens */
+    @media screen and (max-width: 300px) {
+      .cancelbtn, .signupbtn {
+        width: 100%;
+      }
+    }
+
+    </style>
+
+    <script>
+    utenteaccess = "";
+    function AccediPagina()
+    {
+        
+        
+            $.get("http://localhost:62640/api/values/login", function (postData, status)
+            {
+                console.log(postData); 
+                var giusta = false;
+                for (i = 0; i < postData.length; i++)
+                {
+                  if((postData[i].utente != document.getElementById('UserNow').value) &&  (postData[i].password != document.getElementById('PasswordNow').value))
+                  {
+
+                      
+                      //alert("Username o Password errati. Se non sei iscritto clicca sul pulsante qui sotto");
+                    
+
+                  }
+                  else
+                  {
+                      giusta = true;
+                      utenteaccess = postData[i].utente;
+                      
+
+                      //Invia al server l'utente nuovo
+                      var url2 = "http://localhost:62640/api/values/AttualeLogin";
+                      console.log(url2);
+                      
+
+                      var method = "POST";
+                      alert("Benvenuto " + utenteaccess);
+                      var utentelog = utenteaccess;
+
+                      var postData2 = "{'utentelog': '" + utentelog + "'}";
+                      var shouldBeAsync = true;
+
+                      var request = new XMLHttpRequest();
+
+                      request.onload = function () {
+                          var status = request.status; // Questa variabile ti dice se è andata a buon fine
+                      }
+
+                      request.open(method, url2, shouldBeAsync);
+
+                      request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                      request.send(postData2);
+                      alert(status);
+
+                      
+                   }	
+                    
+                    
+                }
+
+                if (giusta == true) {
+                    alert("Benvenuto");
+                    location.href ="http://localhost:62640/home.html";
+
+                }
+                else {
+                    alert("Username o Password errati. Se non sei iscritto clicca sul pulsante qui sotto");
+                }
+        });
+
+
+        ////Invia al server l'utente corrente
+        //$(document).ready(function () {
+        //    $("#entradati").click(function () {
+
+        //        //var url = "/api/values/" + $("#edtIdx").val(); //prima era commentato
+        //        var url2 = "http://localhost:62640/api/values/AttualeLogin";
+        //        console.log(url2);
+        //        //if(document.getElementById('password').value == document.getElementById('password2').value) //Controllo password continua a non andare
+        //        //{
+
+        //        var method = "POST";
+        //        alert(utenteaccess);
+        //        var utentelog = utenteaccess;
+
+        //        var postData2 = "{'utentelog': '" + utentelog + "'}";
+        //        var shouldBeAsync = true;
+
+        //        var request = new XMLHttpRequest();
+
+        //        request.onload = function () {
+        //            var status = request.status; // Questa variabile ti dice se è andata a buon fine
+        //        }
+
+        //        request.open(method, url2, shouldBeAsync);
+
+        //        request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        //        request.send(postData2);
+        //        alert(status);
+        //        //  }
+        //        //else
+        //        //{
+        //        //alert("Le password inserite non combaciano");
+        //        //} 
+        //    });
+        //});
+
+
+        
+        
+    }
+    
+ 
+
+          $(document).ready(function ()
+          {
+            $("#Invia").click(function ()  
+            {
+              //var url = "/api/values/" + $("#edtIdx").val(); //prima era commentato
+              var url = "http://localhost:62640/api/values/registrazione"; 
+              console.log(url);
+              //if(document.getElementById('password').value == document.getElementById('password2').value) //Controllo password continua a non andare
+              //{
+                  var method = "POST";
+                  var ut = document.getElementById('utente').value;
+                  var psw= document.getElementById('password').value;
+                  var postData =  { utente: 'test', password: 'test1'};
+                  var shouldBeAsync = true;
+
+                  var request = new XMLHttpRequest();
+
+                  request.onload = function () 
+                  {
+                                     
+                    var status = request.status; // Questa variabile ti dice se è andata a buon fine
+                    console.log(request);
+                  }
+                  request.open(method, url, shouldBeAsync);
+
+                  request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                  request.send(postData);
+                   //Un attimo che pensook
+                  console.log(request);
+              //  }
+              //else
+              //{
+              //alert("Le password inserite non combaciano");
+              //} 
+            }); 
+        });
+
+
+
+
+
+       
+
+
+        // chiamata usando ajax
+        //$.ajax({
+            
+        //    type: "POST",
+        //    url: url,
+        //    contentType: "application/json; charset=utf-8",
+        //    data: "{'utente': '" + $("#utente").val() + "', 'password': '" + $("#password").val() + "'}",
+        //    dataType: "json",
+        //    beforeSend: function (xhr) {
+        //        xhr.setRequestHeader("Content-type", "application/json");
+        //    },
+        //    success: function (xhr, ajaxOptions, thrownError) {
+        //        alert("OK. Message:" + xhr.statusText);
+        //    },
+        //    error: function (xhr, ajaxOptions, thrownError) {
+        //        alert("Failed to cancel subscription! Message:" + xhr.statusText);
+        //    }
+        //});
+
+      
+
+
+    </script>
+</body>
+</html>
